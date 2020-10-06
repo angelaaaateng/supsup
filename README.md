@@ -82,3 +82,25 @@ python experiments/GNu/MNISTPerm/LeNet-2500-tasks/supsup_h.py
 ```
 where `args.data` should point to a directory containing the dataset and checkpoints/results will be logged at `args.log_dir`.
 These can be changed in the python file. The ablations can be reproduced by e.g. changing output size.
+
+
+### Amber's Notes for 1006 Replication: 
+#### Logging into HPC
+
+Use the [Prince](https://sites.google.com/a/nyu.edu/nyu-hpc/systems/prince) cluster.
+
+Once your account is active, you can log in to HPC by following [these instructions](https://sites.google.com/a/nyu.edu/nyu-hpc/documentation/hpc-access).
+
+When you've successfully logged into Prince, you will need to connect to your GitHub account.
+This is best done via secure shell (SSH).
+The [Connecting to GitHub with SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) document should help you get this set up.
+
+After connecting your Prince account to GitHub, clone this project repository to Prince by using the `git clone ...` command.
+
+```
+ssh at2507@gw.hpc.nyu.edu
+ssh at2507@prince.hpc.nyu.edu
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+```
