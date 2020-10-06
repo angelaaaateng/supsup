@@ -117,6 +117,10 @@ git push origin master
 
 
 pip install tensorboard 
+
+python ./experiments/GG/splitcifar100/rn18-supsup.py --gpu-sets="0" --data="./data" --seeds 1
+
+python ./experiments/GG/splitcifar100/rn18-supsup.py  --data="./data" --seeds 1
 ```
 
 #### Local Installation: 
