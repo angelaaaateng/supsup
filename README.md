@@ -103,4 +103,8 @@ ssh at2507@prince.hpc.nyu.edu
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
+
+git clone git@github.com:angelaaaateng/supsup.git
+source env/bin/activate
+pip install -r requirements.txt
 ```
