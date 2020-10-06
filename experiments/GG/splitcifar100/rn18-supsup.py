@@ -79,8 +79,8 @@ def main():
     #     p.start()
     #     processes.append(p)
 
-    for p in processes:
-        p.join()
+    # for p in processes:
+    #     p.join()
 
 
 if __name__ == "__main__":
