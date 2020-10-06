@@ -100,6 +100,7 @@ After connecting your Prince account to GitHub, clone this project repository to
 ```
 ssh at2507@gw.hpc.nyu.edu
 ssh at2507@prince.hpc.nyu.edu
+ls -al ~/.ssh
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
@@ -107,4 +108,13 @@ cat ~/.ssh/id_rsa.pub
 git clone git@github.com:angelaaaateng/supsup.git
 source env/bin/activate
 pip install -r requirements.txt
+
+sbatch supsup_slurm.s
+squeue -u $USER
+git add slurm_lab0_<JOB_ID>.out
+git commit -m "adding log file"
+git push origin master
+
+
+pip install tensorboard 
 ```
