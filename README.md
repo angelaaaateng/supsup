@@ -118,3 +118,9 @@ git push origin master
 
 pip install tensorboard 
 ```
+
+#### Local Installation: 
+```
+create conda new env
+pip install -r requirements.txt 
+```
