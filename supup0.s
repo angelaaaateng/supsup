@@ -25,5 +25,7 @@ source env/bin/activate
 
 # Execute the script
 # python ./lab0-test.py
-python ./experiments/GG/splitcifar100/rn18-supsup.py --gpu-sets="0|1|2|3" --data="./data" --seeds 1
+# python ./experiments/GG/splitcifar100/rn18-supsup.py --gpu-sets="0|1|2|3" --data="./data" --seeds 1
 # And we're done!
+
+python ./experiments/GG/splitcifar100/rn18-supsup.py  --data="./data" --seeds 1
