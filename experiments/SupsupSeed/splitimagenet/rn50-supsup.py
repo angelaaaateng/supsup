@@ -30,6 +30,7 @@ def run_exp(gpu_num, in_queue):
         print(f"==> Starting experiment {kwargs_to_cmd(experiment)}")
         os.system(kwargs_to_cmd(experiment))
 
+
         with open("output.txt", "a+") as f:
             f.write(
                 f"Finished experiment {experiment} in {str((time.time() - before) / 60.0)}."
@@ -44,32 +45,28 @@ def main():
     args = parser.parse_args()
 
     gpus = args.gpu_sets
-    seeds = list(range(args.seeds))
     data = args.data
 
-    config = "experiments/GG/splitcifar100/configs/rn18-supsup.yaml"
-    log_dir = "runs/rn18-supsup"
+    config = "experiments/GG/splitimagenet/configs/rn50-supsup-adam.yaml"
+    log_dir = "runs/splitimagenet-rn50-supsup"
+    sparsities = [8, 4, 16, 32] # We report [4, 8, 16] in the paper
     experiments = []
-    sparsities = [1, 2, 4, 8, 16, 32] # Higher sparsity values mean more dense subnetworks
 
-    # at change for 1 epoch to check dir
-    for sparsity, seed in product(sparsities, seeds):
+    
+    for sparsity, task_idx in product(sparsities, range(100)):
         kwargs = {
             "config": config,
-            "name": f"id=supsup~seed={seed}~sparsity={sparsity}",
+            "name": f"id=rn50-supsup~task={task_idx}~sparsity={sparsity}",
             "sparsity": sparsity,
-            "seed": seed,
+            "task-eval": task_idx,
             "log-dir": log_dir,
-            "epochs": 250,
-            # "epochs": 10,
-            "data": data
+            "data": data,
         }
 
         experiments.append(kwargs)
 
     print(experiments)
-    # AT Remove any key
-    # input("Press any key to continue...")
+    input("Press any key to continue...")
     queue = Queue()
 
     for e in experiments:
